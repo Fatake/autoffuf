@@ -48,7 +48,7 @@ for target in $(cat ${INPUTF_TARGETS}); do
 		continue
 	fi
 	OUTPUT_LOG="-o ${OUTPUT_FILES}ffuf_target${i}.html -of html"
-	COMMAND="ffuf -r ${RECURSION} ${REPLAY_PROXY} ${WORDLIST} -ac ${OUTPUT_LOG} ${THREADS} -u ${target}/FUZZ"
+	COMMAND="ffuf -r ${RECURSION} ${REPLAY_PROXY} ${WORDLIST} -ac ${OUTPUT_LOG} ${THREADS} ${EXTENSIONS} -u ${target}/FUZZ"
 	
 	echo -e "root# ${COMMAND}"
 	echo -e "<------------------------------->\n";
