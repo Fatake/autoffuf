@@ -2,6 +2,7 @@
 
 Script to run a trustfull ffuf web directorie listing of targets
 
+![](assets/1239935.png)
 
 ---
 
