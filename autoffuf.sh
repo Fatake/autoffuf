@@ -92,7 +92,7 @@ THREADS="-t 10"
 OUTPUT_FILES="$(pwd)/AutoFFUF_${PNAME}/"
 
 #Optional
-COOKIES="-b 'Some:some'"
+COOKIES="-b 'some:some'"
 
 echo -e "\n\t Auto FFUF by Fatake\n"
 echo -e "[i] Project Output: ${OUTPUT_FILES}"
@@ -109,12 +109,12 @@ i=1
 for target in $(cat ${INPUTF_TARGETS}); do
 	echo -e "\n\n[+] Listing Target#${i}: ${target}";
 	echo -e "<------------------------------->";
-	if  ! curl --output /dev/null --silent --head --fail "${target}"; then
-		echo "[!] Target: ${target} NOT RESPONDING"
-		continue
-	fi
+	#if  ! curl --output /dev/null --silent --head --fail "${target}"; then
+	#	echo "[!] Target: ${target} NOT RESPONDING"
+	#	continue
+	#fi
 	OUTPUT_LOG="-o ${OUTPUT_FILES}ffuf_target${i}.html -of html"
-	COMMAND="ffuf -r ${RECURSION} ${REPLAY_PROXY} -w ${WORDLIST} -ac ${OUTPUT_LOG} ${THREADS} ${EXTENSIONS} -u ${target}/FUZZ"
+	COMMAND="ffuf -r ${RECURSION} ${REPLAY_PROXY} -w ${WORDLIST} ${COOKIES} -ac ${OUTPUT_LOG} ${THREADS} ${EXTENSIONS} -u ${target}/FUZZ"
 	
 	echo -e "root# ${COMMAND}"
 	echo -e "<------------------------------->\n";
