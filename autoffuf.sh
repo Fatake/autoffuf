@@ -87,7 +87,7 @@ else
 	WORDLIST="${CUSTOM_WL}"
 fi 
 
-USERAGENT='-H "Mozilla/5.0 \(Windows NT 10.0; rv:100.0\) Gecko/20100101 Firefox/100.0"'
+USERAGENT='-H "User-Agent: Mozilla/5.0 \(Windows NT 10.0; rv:100.0\) Gecko/20100101 Firefox/100.0"'
 EXTENSIONS="-e conf,config,bak,backup,swp,old,db,sql,asp,aspx,aspx~,asp~,py,py~,rb,rb~,php,php~,bak,bkp,cache,cgi,conf,csv,html,inc,jar,js,json,jsp,jsp~,lock,log,rar,old,sql,sql.gz,sql.zip,sql.tar.gz,sql~,swp,swp~,tar,tar.bz2,tar.gz,txt,wadl,zip,.log,.xml,.js.,.json"
 RECURSION="-recursion -recursion-depth 2"
 REPLAY_PROXY="-replay-proxy http://127.0.0.1:8080"
@@ -117,7 +117,7 @@ for target in $(cat ${INPUTF_TARGETS}); do
 	#	continue
 	#fi
 	OUTPUT_LOG="-o ${OUTPUT_FILES}ffuf_target${i}.html -of html"
-	COMMAND="ffuf -r ${RECURSION} ${REPLAY_PROXY} -ic -w ${WORDLIST} ${OUTPUT_LOG} ${THREADS} ${USERAGENT} -u ${target}/FUZZ"
+	COMMAND="ffuf -r ${RECURSION} ${REPLAY_PROXY} -ic -w ${WORDLIST} -ac ${THREADS} ${USERAGENT} ${OUTPUT_LOG} -u ${target}/FUZZ"
 	
 	echo -e "Command# ${COMMAND}"
 	echo -e "<------------------------------->\n";
